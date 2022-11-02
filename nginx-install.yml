@@ -6,7 +6,16 @@
       service:
           name: nginx
           state: started
-    
+    - name: copy the configuration file
+      copy:
+        src: nginx-cfg/nginx.conf
+        dest: /etc/nginx/sites-enabled/default
+        state: link
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+      become: yes    
 
 
   
