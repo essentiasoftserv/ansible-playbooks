@@ -10,9 +10,7 @@
       copy:
         src: nginx-cfg/nginx.conf
         dest: /etc/nginx/sites-enabled/default
-        owner: root
-        group: root
-        mode: 0755
+      become: yes
     - name: restart nginx
       service:
         name: nginx
